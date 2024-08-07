@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ../Scrum-Project-Management-Tool
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGODB_URI=mongodb+srv://pbarthwal90:Pranav123@cluster0.tx71i7y.mongodb.net
+
+  frontend:
+    build:
+      context: ../Frontend-Scrum-Project-Management-Tool
+    ports:
+      - "8080:5173"
+    depends_on:
+      - backend
+
+networks:
+  default:
+    name: my_network
